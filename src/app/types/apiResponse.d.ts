@@ -32,3 +32,4 @@ export interface LocationDetailed {
   dimension: string;
   residents: string[];
 }
+type Nullable<T> = T | null; 

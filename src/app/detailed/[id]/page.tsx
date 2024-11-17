@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Character, LocationDetailed } from "@/app/types/apiResponse";
+import { Character, LocationDetailed, Nullable } from "@/app/types/apiResponse";
 
 interface DataProps {
   params: { id: string }; // Parámetros dinámicos
@@ -11,24 +11,20 @@ export default async function Detailed(bla: DataProps) {
   );
   const character: Character = await response.json();
 
-  let responseOrigin: Response = null;
+  let responseOrigin: Nullable<Response> = null;
 
   if (character.origin?.url != null && character.origin?.url != '') {
     responseOrigin = await fetch(character.origin.url);
   }
 
   let origin: LocationDetailed = await responseOrigin?.json();
-  let responseLocation: Response = null;
+  let responseLocation: Nullable<Response> = null;
 
   if (character.location?.url != null && character.location?.url != '') {
     responseLocation = await fetch(character.location.url);
   }
 
   let location: LocationDetailed = await responseLocation?.json();
-
-  const imageLoader = ({ src, width, quality }:any) => {
-    return 'character.image'
-  }
    
 
   const RenderLocation = (name: string, l: LocationDetailed) => {
