@@ -9,7 +9,7 @@ export default async function Home() {
     <main className="home">
       <div className="flex gap-25">
         {data.results.map((x) => (
-          <CharacterComponent character={x} />
+          <CharacterComponent key={x.id} character={x} />
         ))}
       </div>
     </main>
