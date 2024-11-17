@@ -78,3 +78,8 @@ body {
     border-top-width: 1px;
     border-top-style: dashed;
 }
+
+a {
+    color: blue;
+    text-decoration: underline;
+}
